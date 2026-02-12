@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   description:
     "Premium mobile food cart service for your events in Montreal. Mini pancakes, candy bars, charcuterie, and more. Book Mel'angé by Melissa for your next celebration!",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/melange-website/favicon.png",
+    shortcut: "/melange-website/favicon.png",
+    apple: "/melange-website/favicon.png",
   },
 };
 

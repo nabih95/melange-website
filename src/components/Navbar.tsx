@@ -42,7 +42,7 @@ export default function Navbar() {
           <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-white shadow-md bg-[#D4899B]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
+              src="/melange-website/logo.png"
               alt="Mel'angé by Melissa"
               className="w-full h-full object-cover scale-125"
             />

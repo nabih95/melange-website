@@ -76,7 +76,7 @@ export default function Hero() {
             <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden ring-4 ring-white shadow-2xl bg-[#D4899B]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
+                src="/melange-website/logo.png"
                 alt="Mel'angé by Melissa logo"
                 className="w-full h-full object-cover scale-125"
               />
