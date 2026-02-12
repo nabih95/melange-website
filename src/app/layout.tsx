@@ -31,6 +31,26 @@ export const metadata: Metadata = {
     shortcut: "/melange-website/favicon.png",
     apple: "/melange-website/favicon.png",
   },
+  openGraph: {
+    title: "Mel'angé by Melissa",
+    description: "Premium mobile food cart service for your events in Montreal.",
+    url: "https://nabih95.github.io/melange-website/",
+    siteName: "Mel'angé by Melissa",
+    images: [
+      {
+        url: "https://nabih95.github.io/melange-website/og-image.png",
+        width: 500,
+        height: 500,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mel'angé by Melissa",
+    description: "Premium mobile food cart service for your events in Montreal.",
+    images: ["https://nabih95.github.io/melange-website/og-image.png"],
+  },
 };
 
 export default function RootLayout({
