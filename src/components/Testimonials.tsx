@@ -1,24 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const testimonials = [
-  {
-    quote:
-      "Melissa made our event absolutely magical! The mini pancake cart was a huge hit!",
-    author: "Happy Client",
-  },
-  {
-    quote:
-      "The candy bar setup was stunning. Everyone was impressed!",
-    author: "Event Planner",
-  },
-  {
-    quote:
-      "Professional, elegant, and delicious. Highly recommend for any event!",
-    author: "Corporate Client",
-  },
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 function Stars() {
   return (
@@ -38,6 +21,8 @@ function Stars() {
 }
 
 export default function Testimonials() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
@@ -49,12 +34,12 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-[var(--font-heading)] text-charcoal gold-underline">
-            What Our Clients Say
+            {t.testimonials.heading}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
+          {t.testimonials.items.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -70,10 +55,10 @@ export default function Testimonials() {
 
               <Stars />
               <p className="text-charcoal/80 leading-relaxed mb-6 relative z-10 italic">
-                &ldquo;{t.quote}&rdquo;
+                &ldquo;{item.quote}&rdquo;
               </p>
               <p className="text-deep-rose font-medium text-sm">
-                — <em>{t.author}</em>
+                — <em>{item.author}</em>
               </p>
             </motion.div>
           ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslation } from "@/context/LanguageContext";
 
 function SparkleIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
   return (
@@ -29,6 +30,8 @@ const sparkles = [
 ];
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -93,7 +96,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="font-[var(--font-heading)] text-lg sm:text-xl md:text-2xl text-charcoal/80 mb-3 max-w-2xl mx-auto"
         >
-          Mobile food cart for your events, with many options to choose from ✨
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.p
@@ -102,7 +105,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-deep-rose font-medium text-base sm:text-lg mb-10"
         >
-          Serving the Montreal area
+          {t.hero.servingArea}
         </motion.p>
 
         <motion.div
@@ -115,13 +118,13 @@ export default function Hero() {
             href="#services"
             className="bg-white text-charcoal border-2 border-blush px-8 py-3.5 rounded-full font-medium hover:bg-blush hover:border-blush transition-all"
           >
-            Explore Our Services
+            {t.hero.exploreServices}
           </a>
           <a
             href="#contact"
             className="bg-blush text-charcoal px-8 py-3.5 rounded-full font-medium hover:bg-deep-rose hover:text-white transition-all"
           >
-            Book Now
+            {t.hero.bookNow}
           </a>
         </motion.div>
       </div>

@@ -2,17 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Services", href: "#services" },
-  { name: "About", href: "#about" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t, language, setLanguage } = useTranslation();
+
+  const navLinks = [
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.services, href: "#services" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.gallery, href: "#gallery" },
+    { name: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -27,6 +30,10 @@ export default function Navbar() {
       document.body.style.overflow = "";
     }
   }, [mobileOpen]);
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "fr" : "en");
+  };
 
   return (
     <nav
@@ -53,18 +60,24 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.name}
+              key={link.href}
               href={link.href}
               className="text-sm font-medium text-charcoal hover:text-deep-rose transition-colors"
             >
               {link.name}
             </a>
           ))}
+          <button
+            onClick={toggleLanguage}
+            className="bg-cream text-charcoal border border-blush px-3 py-1 rounded-full text-sm font-medium cursor-pointer hover:bg-blush transition-colors"
+          >
+            {language === "en" ? "FR" : "EN"}
+          </button>
           <a
             href="#contact"
             className="bg-blush text-charcoal px-5 py-2.5 rounded-full text-sm font-medium hover:bg-deep-rose hover:text-white transition-all"
           >
-            Book Your Event ✨
+            {t.nav.bookEvent}
           </a>
         </div>
 
@@ -113,7 +126,7 @@ export default function Navbar() {
             </button>
             {navLinks.map((link) => (
               <a
-                key={link.name}
+                key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-xl font-[var(--font-heading)] text-charcoal hover:text-deep-rose transition-colors"
@@ -121,12 +134,21 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
+            <button
+              onClick={() => {
+                toggleLanguage();
+                setMobileOpen(false);
+              }}
+              className="bg-cream text-charcoal border border-blush px-5 py-2 rounded-full text-lg font-medium cursor-pointer hover:bg-blush transition-colors"
+            >
+              {language === "en" ? "FR" : "EN"}
+            </button>
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
               className="bg-blush text-charcoal px-8 py-3 rounded-full text-lg font-medium hover:bg-deep-rose hover:text-white transition-all"
             >
-              Book Your Event ✨
+              {t.nav.bookEvent}
             </a>
           </motion.div>
         )}

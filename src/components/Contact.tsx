@@ -1,18 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const eventTypes = [
-  "Birthday",
-  "Wedding",
-  "Baby Shower",
-  "Corporate",
-  "Holiday Party",
-  "Bridal Shower",
-  "Other",
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,7 +17,7 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-[var(--font-heading)] text-charcoal gold-underline">
-            Let&apos;s Make Your Event Special
+            {t.contact.heading}
           </h2>
         </motion.div>
 
@@ -44,7 +37,7 @@ export default function Contact() {
             >
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1.5">
-                  Name
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -52,14 +45,14 @@ export default function Contact() {
                   name="name"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                  placeholder="Your name"
+                  placeholder={t.contact.namePlaceholder}
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1.5">
-                    Email
+                    {t.contact.emailLabel}
                   </label>
                   <input
                     type="email"
@@ -67,19 +60,19 @@ export default function Contact() {
                     name="email"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                    placeholder="your@email.com"
+                    placeholder={t.contact.emailPlaceholder}
                   />
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1.5">
-                    Phone
+                    {t.contact.phoneLabel}
                   </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                    placeholder="(514) 555-0000"
+                    placeholder={t.contact.phonePlaceholder}
                   />
                 </div>
               </div>
@@ -87,15 +80,15 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="eventType" className="block text-sm font-medium text-charcoal mb-1.5">
-                    Event Type
+                    {t.contact.eventTypeLabel}
                   </label>
                   <select
                     id="eventType"
                     name="eventType"
                     className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
                   >
-                    <option value="">Select event type</option>
-                    {eventTypes.map((type) => (
+                    <option value="">{t.contact.eventTypePlaceholder}</option>
+                    {t.contact.eventTypes.map((type) => (
                       <option key={type} value={type}>
                         {type}
                       </option>
@@ -104,7 +97,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <label htmlFor="eventDate" className="block text-sm font-medium text-charcoal mb-1.5">
-                    Event Date
+                    {t.contact.eventDateLabel}
                   </label>
                   <input
                     type="date"
@@ -117,14 +110,14 @@ export default function Contact() {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1.5">
-                  Message
+                  {t.contact.messageLabel}
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors resize-none"
-                  placeholder="Tell us about your event..."
+                  placeholder={t.contact.messagePlaceholder}
                 />
               </div>
 
@@ -132,7 +125,7 @@ export default function Contact() {
                 type="submit"
                 className="w-full bg-blush text-charcoal px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gold hover:text-white transition-all shadow-sm hover:shadow-md"
               >
-                Send Inquiry ✨
+                {t.contact.submitButton}
               </button>
             </form>
           </motion.div>
@@ -148,11 +141,11 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">📍</span>
-                <span className="text-lg text-charcoal">Montreal &amp; area</span>
+                <span className="text-lg text-charcoal">{t.contact.locationText}</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-2xl">📩</span>
-                <span className="text-lg text-charcoal">Message us to book</span>
+                <span className="text-lg text-charcoal">{t.contact.messageUsText}</span>
               </div>
               <div className="flex items-center gap-3">
                 <a

@@ -1,17 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const tags = [
-  "Birthdays",
-  "Weddings",
-  "Baby Showers",
-  "Corporate Events",
-  "Holiday Parties",
-  "Bridal Showers",
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className="py-24 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
@@ -64,23 +58,17 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl sm:text-4xl font-[var(--font-heading)] text-charcoal mb-6 gold-underline">
-              The Mel&apos;angé Experience
+              {t.about.heading}
             </h2>
             <p className="text-charcoal/80 leading-relaxed mb-8 mt-12">
-              At Mel&apos;angé by Melissa, we bring a touch of elegance and
-              sweetness to your special moments. Our beautifully styled mobile
-              food cart rolls into your events — from birthdays and baby showers
-              to corporate functions and holiday parties — offering a curated
-              selection of treats that delight both the eyes and the taste buds.
-              Based in Montreal, we believe every event deserves a little extra
-              magic. ✨
+              {t.about.paragraph}
             </p>
 
             <p className="font-[var(--font-heading)] text-lg text-charcoal mb-4">
-              Perfect for:
+              {t.about.perfectFor}
             </p>
             <div className="flex flex-wrap gap-3">
-              {tags.map((tag) => (
+              {t.about.tags.map((tag) => (
                 <span
                   key={tag}
                   className="bg-white border border-blush px-4 py-2 rounded-full text-sm text-charcoal/80 hover:bg-blush hover:text-charcoal transition-colors"

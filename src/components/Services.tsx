@@ -1,35 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const services = [
-  {
-    icon: "🥞",
-    title: "Mini Pancake Cart",
-    description:
-      "Freshly made mini pancakes with a variety of delicious toppings — a crowd favorite at any event!",
-  },
-  {
-    icon: "🍬",
-    title: "Candy & Sweets Bar",
-    description:
-      "A beautifully styled candy bar display with an assortment of treats to satisfy every sweet tooth.",
-  },
-  {
-    icon: "🧀",
-    title: "Charcuterie",
-    description:
-      "Elegant charcuterie boards and displays featuring premium meats, cheeses, fruits, and accompaniments.",
-  },
-  {
-    icon: "🏢",
-    title: "Corporate Events",
-    description:
-      "Elevate your corporate gatherings with our customizable food cart experience tailored to your brand.",
-  },
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function Services() {
+  const { t } = useTranslation();
+
   return (
     <section id="services" className="py-24 bg-blush/20">
       <div className="max-w-7xl mx-auto px-6">
@@ -41,14 +17,14 @@ export default function Services() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-[var(--font-heading)] text-charcoal gold-underline">
-            Our Services
+            {t.services.heading}
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, i) => (
+          {t.services.items.map((service, i) => (
             <motion.div
-              key={service.title}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}

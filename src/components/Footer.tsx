@@ -1,4 +1,10 @@
+"use client";
+
+import { useTranslation } from "@/context/LanguageContext";
+
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-charcoal text-cream/90 py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,24 +30,23 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-3 text-cream/60 text-sm leading-relaxed">
-              Premium mobile food cart service for your events in Montreal.
-              Making every event a little sweeter. ✨
+              {t.footer.tagline}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="font-[var(--font-heading)] text-lg text-blush mb-4">
-              Quick Links
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2">
-              {["Services", "About", "Gallery", "Contact"].map((link) => (
-                <li key={link}>
+              {t.footer.links.map((link) => (
+                <li key={link.href}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={link.href}
                     className="text-cream/60 hover:text-blush transition-colors text-sm"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -51,7 +56,7 @@ export default function Footer() {
           {/* Social */}
           <div>
             <h4 className="font-[var(--font-heading)] text-lg text-blush mb-4">
-              Follow Us
+              {t.footer.followUs}
             </h4>
             <a
               href="https://www.instagram.com/melangebymelissa/"
@@ -71,7 +76,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-cream/10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-cream/40 text-xs">
-              &copy; 2025 Mel&apos;angé by Melissa. All rights reserved.
+              {t.footer.copyright}
             </p>
             {/* Small gold decorative line */}
             <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />

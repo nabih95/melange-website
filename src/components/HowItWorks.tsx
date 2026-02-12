@@ -1,28 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const steps = [
-  {
-    number: "1",
-    title: "Get in Touch",
-    description: "Send us a message with your event details and date.",
-  },
-  {
-    number: "2",
-    title: "We Customize",
-    description:
-      "We'll work together to create the perfect setup for your event.",
-  },
-  {
-    number: "3",
-    title: "We Roll In ✨",
-    description:
-      "Our cart arrives beautifully set up, ready to wow your guests.",
-  },
-];
+import { useTranslation } from "@/context/LanguageContext";
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
+
+  const steps = t.howItWorks.steps.map((step, i) => ({
+    number: String(i + 1),
+    title: step.title,
+    description: step.description,
+  }));
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -34,7 +23,7 @@ export default function HowItWorks() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-[var(--font-heading)] text-charcoal gold-underline">
-            How It Works
+            {t.howItWorks.heading}
           </h2>
         </motion.div>
 
