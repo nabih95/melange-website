@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-cream/90 py-16">
@@ -9,11 +7,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-11 h-11 rounded-full overflow-hidden ring-2 ring-white/30 shadow-md bg-[#D4899B]">
-                <Image
-                  src="/logo.png"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
                   alt="Mel'angé by Melissa"
-                  width={44}
-                  height={44}
                   className="w-full h-full object-cover scale-125"
                 />
               </div>

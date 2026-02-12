@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Services", href: "#services" },
@@ -42,11 +40,10 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className="flex items-center">
           <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-white shadow-md bg-[#D4899B]">
-            <Image
-              src="/logo.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo.png`}
               alt="Mel'angé by Melissa"
-              width={48}
-              height={48}
               className="w-full h-full object-cover scale-125"
             />
           </div>
