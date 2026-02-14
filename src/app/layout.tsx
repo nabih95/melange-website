@@ -28,18 +28,18 @@ export const metadata: Metadata = {
   description:
     "Premium mobile food cart service for your events in Montreal. Mini pancakes, candy bars, charcuterie, and more. Book Mel'angé by Melissa for your next celebration!",
   icons: {
-    icon: "/melange-website/favicon.png",
-    shortcut: "/melange-website/favicon.png",
-    apple: "/melange-website/favicon.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Mel'angé by Melissa",
     description: "Premium mobile food cart service for your events in Montreal.",
-    url: "https://nabih95.github.io/melange-website/",
+    url: "https://melangemtl.com/",
     siteName: "Mel'angé by Melissa",
     images: [
       {
-        url: "https://nabih95.github.io/melange-website/og-image.png",
+        url: "https://melangemtl.com/og-image.png",
         width: 500,
         height: 500,
       },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Mel'angé by Melissa",
     description: "Premium mobile food cart service for your events in Montreal.",
-    images: ["https://nabih95.github.io/melange-website/og-image.png"],
+    images: ["https://melangemtl.com/og-image.png"],
   },
 };
 

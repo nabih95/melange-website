@@ -30,7 +30,7 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
           >
             <form
-              action="mailto:melangebymelissa@gmail.com"
+              action="mailto:melangebymelissa@hotmail.com"
               method="POST"
               encType="text/plain"
               className="space-y-5"
