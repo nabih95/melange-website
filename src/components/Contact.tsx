@@ -1,10 +1,41 @@
 "use client";
 
+import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "@/context/LanguageContext";
 
 export default function Contact() {
   const { t } = useTranslation();
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", "958e8043-dcc1-4f66-9550-7f095cc53730");
+    formData.append("subject", "New inquiry from Mel'angé website");
+    formData.append("from_name", "Mel'angé Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -29,105 +60,125 @@ export default function Contact() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
           >
-            <form
-              action="mailto:melangebymelissa@hotmail.com"
-              method="POST"
-              encType="text/plain"
-              className="space-y-5"
-            >
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1.5">
-                  {t.contact.nameLabel}
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                  placeholder={t.contact.namePlaceholder}
-                />
+            {status === "success" ? (
+              <div className="flex items-center justify-center min-h-[300px]">
+                <div className="text-center space-y-4">
+                  <span className="text-5xl">✨</span>
+                  <p className="text-lg text-charcoal font-medium">
+                    {t.contact.successMessage}
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="text-deep-rose hover:text-burgundy underline transition-colors"
+                  >
+                    {t.contact.submitButton}
+                  </button>
+                </div>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot for spam protection */}
+                <input type="checkbox" name="botcheck" className="hidden" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1.5">
-                    {t.contact.emailLabel}
+                  <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1.5">
+                    {t.contact.nameLabel}
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
+                    type="text"
+                    id="name"
+                    name="name"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                    placeholder={t.contact.emailPlaceholder}
+                    placeholder={t.contact.namePlaceholder}
                   />
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1.5">
+                      {t.contact.emailLabel}
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
+                      placeholder={t.contact.emailPlaceholder}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1.5">
+                      {t.contact.phoneLabel}
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
+                      placeholder={t.contact.phonePlaceholder}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="eventType" className="block text-sm font-medium text-charcoal mb-1.5">
+                      {t.contact.eventTypeLabel}
+                    </label>
+                    <select
+                      id="eventType"
+                      name="eventType"
+                      className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
+                    >
+                      <option value="">{t.contact.eventTypePlaceholder}</option>
+                      {t.contact.eventTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="eventDate" className="block text-sm font-medium text-charcoal mb-1.5">
+                      {t.contact.eventDateLabel}
+                    </label>
+                    <input
+                      type="date"
+                      id="eventDate"
+                      name="eventDate"
+                      className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-1.5">
-                    {t.contact.phoneLabel}
+                  <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1.5">
+                    {t.contact.messageLabel}
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                    placeholder={t.contact.phonePlaceholder}
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors resize-none"
+                    placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="eventType" className="block text-sm font-medium text-charcoal mb-1.5">
-                    {t.contact.eventTypeLabel}
-                  </label>
-                  <select
-                    id="eventType"
-                    name="eventType"
-                    className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                  >
-                    <option value="">{t.contact.eventTypePlaceholder}</option>
-                    {t.contact.eventTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="eventDate" className="block text-sm font-medium text-charcoal mb-1.5">
-                    {t.contact.eventDateLabel}
-                  </label>
-                  <input
-                    type="date"
-                    id="eventDate"
-                    name="eventDate"
-                    className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors"
-                  />
-                </div>
-              </div>
+                {status === "error" && (
+                  <p className="text-red-600 text-sm">{t.contact.errorMessage}</p>
+                )}
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1.5">
-                  {t.contact.messageLabel}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-xl border border-blush/50 bg-cream/50 text-charcoal focus:outline-none focus:border-deep-rose focus:ring-1 focus:ring-deep-rose/30 transition-colors resize-none"
-                  placeholder={t.contact.messagePlaceholder}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-blush text-charcoal px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gold hover:text-white transition-all shadow-sm hover:shadow-md"
-              >
-                {t.contact.submitButton}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="w-full bg-blush text-charcoal px-8 py-3.5 rounded-full font-medium text-lg hover:bg-gold hover:text-white transition-all shadow-sm hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === "sending" ? t.contact.sendingButton : t.contact.submitButton}
+                </button>
+              </form>
+            )}
           </motion.div>
 
           {/* Right Side Info */}

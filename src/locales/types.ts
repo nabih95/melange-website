@@ -61,6 +61,9 @@ export type Translations = {
     messageLabel: string;
     messagePlaceholder: string;
     submitButton: string;
+    sendingButton: string;
+    successMessage: string;
+    errorMessage: string;
     locationText: string;
     messageUsText: string;
   };
