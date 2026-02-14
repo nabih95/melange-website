@@ -36,24 +36,17 @@ export const fr: Translations = {
         description:
           "\u00c9l\u00e9gantes planches et pr\u00e9sentations de charcuterie avec viandes, fromages, fruits et accompagnements de qualit\u00e9.",
       },
-      {
-        icon: "\uD83C\uDFE2",
-        title: "\u00c9v\u00e9nements corporatifs",
-        description:
-          "Rehaussez vos rassemblements corporatifs avec notre exp\u00e9rience de chariot de cuisine personnalisable, adapt\u00e9e \u00e0 votre marque.",
-      },
     ],
   },
   about: {
     heading: "L\u2019exp\u00e9rience Mel\u2019ang\u00e9",
     paragraph:
-      "Chez Mel\u2019ang\u00e9 by Melissa, nous apportons une touche d\u2019\u00e9l\u00e9gance et de douceur \u00e0 vos moments sp\u00e9ciaux. Notre magnifique chariot de cuisine mobile se d\u00e9place jusqu\u2019\u00e0 vos \u00e9v\u00e9nements \u2014 des anniversaires et f\u00eates pr\u00e9natales aux fonctions corporatives et f\u00eates des F\u00eates \u2014 offrant une s\u00e9lection de d\u00e9lices qui ravissent autant les yeux que les papilles. Bas\u00e9s \u00e0 Montr\u00e9al, nous croyons que chaque \u00e9v\u00e9nement m\u00e9rite un peu de magie suppl\u00e9mentaire. \u2728",
+      "Chez Mel\u2019ang\u00e9 by Melissa, nous apportons une touche d\u2019\u00e9l\u00e9gance et de douceur \u00e0 vos moments sp\u00e9ciaux. Notre magnifique chariot de cuisine mobile se d\u00e9place jusqu\u2019\u00e0 vos \u00e9v\u00e9nements \u2014 des anniversaires et f\u00eates pr\u00e9natales aux mariages et f\u00eates des F\u00eates \u2014 offrant une s\u00e9lection de d\u00e9lices qui ravissent autant les yeux que les papilles. Bas\u00e9s \u00e0 Montr\u00e9al, nous croyons que chaque \u00e9v\u00e9nement m\u00e9rite un peu de magie suppl\u00e9mentaire. \u2728",
     perfectFor: "Parfait pour :",
     tags: [
       "Anniversaires",
       "Mariages",
       "F\u00eates pr\u00e9natales",
-      "\u00c9v\u00e9nements corporatifs",
       "F\u00eates des F\u00eates",
       "F\u00eates nuptiales",
     ],
@@ -123,7 +116,6 @@ export const fr: Translations = {
       "Anniversaire",
       "Mariage",
       "F\u00eate pr\u00e9natale",
-      "Corporatif",
       "F\u00eate des F\u00eates",
       "F\u00eate nuptiale",
       "Autre",

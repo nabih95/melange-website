@@ -36,24 +36,17 @@ export const en: Translations = {
         description:
           "Elegant charcuterie boards and displays featuring premium meats, cheeses, fruits, and accompaniments.",
       },
-      {
-        icon: "\uD83C\uDFE2",
-        title: "Corporate Events",
-        description:
-          "Elevate your corporate gatherings with our customizable food cart experience tailored to your brand.",
-      },
     ],
   },
   about: {
     heading: "The Mel\u2019ang\u00e9 Experience",
     paragraph:
-      "At Mel\u2019ang\u00e9 by Melissa, we bring a touch of elegance and sweetness to your special moments. Our beautifully styled mobile food cart rolls into your events \u2014 from birthdays and baby showers to corporate functions and holiday parties \u2014 offering a curated selection of treats that delight both the eyes and the taste buds. Based in Montreal, we believe every event deserves a little extra magic. \u2728",
+      "At Mel\u2019ang\u00e9 by Melissa, we bring a touch of elegance and sweetness to your special moments. Our beautifully styled mobile food cart rolls into your events \u2014 from birthdays and baby showers to weddings and holiday parties \u2014 offering a curated selection of treats that delight both the eyes and the taste buds. Based in Montreal, we believe every event deserves a little extra magic. \u2728",
     perfectFor: "Perfect for:",
     tags: [
       "Birthdays",
       "Weddings",
       "Baby Showers",
-      "Corporate Events",
       "Holiday Parties",
       "Bridal Showers",
     ],
@@ -123,7 +116,6 @@ export const en: Translations = {
       "Birthday",
       "Wedding",
       "Baby Shower",
-      "Corporate",
       "Holiday Party",
       "Bridal Shower",
       "Other",

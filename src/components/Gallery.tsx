@@ -15,7 +15,7 @@ const photos = [
     alt: "Colorful candy display",
   },
   {
-    src: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&h=600&fit=crop",
+    src: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=600&h=600&fit=crop",
     alt: "Charcuterie board with meats and cheeses",
   },
   {
