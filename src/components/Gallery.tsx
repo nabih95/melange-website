@@ -1,36 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useTranslation } from "@/context/LanguageContext";
 
-/* Replace these Unsplash stock photos with actual event photos */
-const photos = [
-  {
-    src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=600&fit=crop",
-    alt: "Mini pancakes with toppings",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1499195333224-3ce974eecb47?w=600&h=600&fit=crop",
-    alt: "Colorful candy display",
-  },
-  {
-    src: "/charcuterie.png",
-    alt: "Charcuterie board with meats and cheeses",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=600&fit=crop",
-    alt: "Elegant party celebration setup",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&h=600&fit=crop",
-    alt: "Assorted sweet treats and donuts",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&h=600&fit=crop",
-    alt: "Beautifully decorated event table",
-  },
+const galleryItems = [
+  { emoji: "🥞", bg: "from-blush/50 to-cream", accent: "text-deep-rose" },
+  { emoji: "🍬", bg: "from-gold/30 to-cream", accent: "text-gold" },
+  { emoji: "🧀", bg: "from-deep-rose/30 to-cream", accent: "text-burgundy" },
+  { emoji: "🎪", bg: "from-blush/40 to-gold/20", accent: "text-deep-rose" },
+  { emoji: "🍩", bg: "from-gold/40 to-blush/30", accent: "text-gold" },
+  { emoji: "🎉", bg: "from-burgundy/20 to-blush/40", accent: "text-burgundy" },
 ];
+
+function SparkleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="12"
+      height="12"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <path d="M8 0L9.5 5.5L16 8L9.5 10.5L8 16L6.5 10.5L0 8L6.5 5.5Z" />
+    </svg>
+  );
+}
 
 export default function Gallery() {
   const { t } = useTranslation();
@@ -50,30 +44,33 @@ export default function Gallery() {
           </h2>
         </motion.div>
 
-        {/* Replace stock photos with actual event photos */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {photos.map((item, i) => (
+          {galleryItems.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-lg transition-shadow"
+              className={`relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br ${item.bg} border border-blush/30 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center gap-3 group cursor-pointer`}
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              {/* Decorative sparkles */}
+              <SparkleIcon
+                className={`absolute top-3 right-4 ${item.accent} opacity-40 group-hover:opacity-80 transition-opacity`}
               />
-              {/* Hover overlay with label */}
-              <div className="absolute inset-0 bg-burgundy/0 group-hover:bg-burgundy/40 transition-colors duration-300 flex items-end justify-center">
-                <span className="text-white font-medium text-sm pb-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                  {t.gallery.labels[i]}
-                </span>
-              </div>
+              <SparkleIcon
+                className={`absolute bottom-4 left-3 ${item.accent} opacity-30 group-hover:opacity-70 transition-opacity`}
+              />
+
+              {/* Main emoji */}
+              <span className="text-5xl sm:text-6xl group-hover:scale-110 transition-transform duration-300">
+                {item.emoji}
+              </span>
+
+              {/* Label */}
+              <span className="font-[var(--font-heading)] text-sm sm:text-base text-charcoal/80 text-center px-2">
+                {t.gallery.labels[i]}
+              </span>
             </motion.div>
           ))}
         </div>

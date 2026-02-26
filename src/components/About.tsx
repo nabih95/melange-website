@@ -22,27 +22,13 @@ export default function About() {
               {/* Decorative background circles */}
               <div className="absolute inset-0 rounded-full bg-blush/30" />
               <div className="absolute inset-4 rounded-full bg-blush/20" />
-              <div className="absolute inset-8 rounded-full bg-white/60 flex items-center justify-center">
-                {/* Cart illustration */}
-                <svg
-                  viewBox="0 0 120 120"
-                  className="w-48 h-48 text-burgundy/60"
-                  fill="currentColor"
-                >
-                  {/* Cart body */}
-                  <rect x="20" y="35" width="60" height="40" rx="4" opacity="0.8" />
-                  {/* Cart roof */}
-                  <path d="M15 35 L50 10 L85 35 Z" opacity="0.6" />
-                  {/* Wheels */}
-                  <circle cx="32" cy="82" r="7" opacity="0.8" />
-                  <circle cx="68" cy="82" r="7" opacity="0.8" />
-                  {/* Handle */}
-                  <rect x="78" y="48" width="25" height="3" rx="1.5" opacity="0.6" />
-                  {/* Window */}
-                  <rect x="30" y="42" width="40" height="18" rx="2" fill="#FFF8F3" opacity="0.5" />
-                  {/* Decorative bunting */}
-                  <path d="M20 35 L30 42 L40 35 L50 42 L60 35 L70 42 L80 35" fill="none" stroke="#D4A76A" strokeWidth="1.5" opacity="0.7" />
-                </svg>
+              <div className="absolute inset-8 rounded-full bg-white/60 flex items-center justify-center overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo.png"
+                  alt="Mel'angé by Melissa"
+                  className="w-full h-full object-cover scale-125"
+                />
               </div>
               {/* Floating sparkle accents */}
               <div className="absolute top-4 right-8 text-gold animate-float" style={{ animationDelay: "0s" }}>✨</div>
