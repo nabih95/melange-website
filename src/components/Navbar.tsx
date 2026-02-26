@@ -117,6 +117,17 @@ export default function Navbar() {
             transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center gap-8 md:hidden"
           >
+            {/* Close button */}
+            <button
+              className="absolute top-5 right-5 w-12 h-12 flex items-center justify-center rounded-full bg-cream border border-blush/40"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D2B2B" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+
             {navLinks.map((link) => (
               <a
                 key={link.href}

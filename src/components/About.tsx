@@ -22,7 +22,7 @@ export default function About() {
               {/* Decorative background circles */}
               <div className="absolute inset-0 rounded-full bg-blush/30" />
               <div className="absolute inset-4 rounded-full bg-blush/20" />
-              <div className="absolute inset-8 rounded-full bg-white/60 flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-8 rounded-full bg-[#D4899B] flex items-center justify-center overflow-hidden ring-4 ring-white shadow-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo.png"

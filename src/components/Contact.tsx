@@ -191,7 +191,7 @@ export default function Contact() {
           >
             <div className="relative w-64 h-64">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blush/30 to-gold/10" />
-              <div className="absolute inset-4 rounded-full bg-white/60 overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-4 rounded-full bg-[#D4899B] overflow-hidden flex items-center justify-center ring-4 ring-white shadow-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo.png"
